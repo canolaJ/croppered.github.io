@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<model>
+    <id>PersonalizedCard3</id>
+    <name>PersonalizedCard3</name>
+    <description>Widget para Personalized Card Billu</description>
+    <type>WIDGET</type>
+    <version>1.0</version>
+     <hash>924ee3ba769de7d1a1b8a8634677dd2</hash> <!--https://herramientas-online.com/generador-hash-online.html#resp == personalizedCard-->
+    <treeIcon>img/arcoiris.png</treeIcon>
+    <dragImage>img/arcoiris.png</dragImage>
+    <simulatorImage>img/arcoiris.png</simulatorImage>
+    <attributes>
+    <!-- START INPUT info de host | config a widget-->
+        <attribute>
+            <label>imgUp</label>
+            <name>imgUp</name>
+            <defaultValue></defaultValue>
+            <description>Obtiene img desde mobile</description>
+                <type>TEXT</type>
+            <direction>INPUT</direction>
+            <edit>true</edit>
+            <required>false</required>
+            <group>INPUT (Atributos)</group>
+            <icon></icon>
+            <list />
+        </attribute>
+    <!-- END INPUT -->
+    <!-- START OUTPUT info  widget a de config -->
+        <attribute>
+            <label>imgCropped</label>
+            <name>imgCropped</name>
+            <defaultValue></defaultValue>
+            <description>envia img cortada</description>
+                <type>TEXT</type>
+            <direction>OUTPUT</direction>
+            <edit>true</edit>
+            <required>false</required>
+            <group>OUTPUT (Atributos)</group>
+            <icon></icon>
+            <list />
+        </attribute>
+    <!-- END OUTPUT -->
+    </attributes>
+    <!-- START EVENT WIDGET desencadena una accion-->
+    <events>
+        <event>
+            <label>get img to cut</label>
+            <name>p_get_img_cut</name>
+            <description>Proceso que carga la imagen</description>
+            <required>true</required>
+            <group>Eventos Widget</group>
+            <icon></icon>
+        </event>
+        <event>
+            <label>send img cropped</label>
+            <name>p_out_img_croppedt</name>
+            <description>POroceso que envia la imagen recortada</description>
+            <required>true</required>
+            <group>Eventos Widget</group>
+            <icon></icon>
+        </event>
+    </events>
+   
+    <!-- END EVENT WIDGET -->
+    <!-- START messages obtine info y queda almacenada-->
+    <messages>
+        <message>
+            <label>Msg Get Obtener Data</label>
+            <name>vtgetdata</name>
+            <description>Almacena IMG64</description>
+        </message>
+    </messages>
+    <!-- END messages -->
+
+</model>

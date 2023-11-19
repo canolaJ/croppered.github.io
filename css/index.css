@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+@font-face {
+    font-family: 'HindVadodara_Regular';
+    /* src: url(../fonts/HindVadodara_Regular.ttf); */
+    src: url(../css/HindVadodara_Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'HindVadodara_SemiBold';
+    /* src: url(../fonts/HindVadodara_SemiBold.ttf); */
+    src: url(../css/HindVadodara_SemiBold.ttf);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'HindVadodara_Bold';
+    /* src: url(../fonts/HindVadodara_Bold.ttf); */
+    src: url(../css/HindVadodara_Bold.ttf);
+    font-weight: 700;
+}
+
+*{
+    margin: 0;
+    padding: 2px;
+    box-sizing: border-box;
+    font-family: 'HindVadodara_Regular';
+    max-height: 100vh;
+}
+
+
+:root{
+    --primary-color: #00DBB3;
+    --secundary-color: rgb(255,255,255);
+    --thir-color: #1E786F;
+    --primary-color-hover: #00dbb3d7;
+    --secundary-color-hover:rgb(255, 255, 255);
+}
+
+.container{
+    width: 672px;
+    margin: 10px auto;
+    padding: 0;
+    height: 1050px;
+}
+.group{
+    position: relative;
+    width: 100%;
+    height: 1050px;
+    padding: 0;
+    /* outline: 1px solid var(--secundary-color); */
+    border-radius: 5%;
+    overflow: hidden;
+}
+.group .crop-image{
+    width: 100%;
+    height: 1050px;
+}
+.group #input-file{
+    display: none;
+}
+.group .label-file{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color: rgba(157, 167, 180, 0);
+    padding: 30px 70px;
+    font-size: 18px;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    transition: all 150ms ease-in-out;
+    color: var(--primary-color);
+}
+.group:hover .label-file{
+    bottom: 0;
+}
+
+/* ==== Modal estilos ==== */
+
+.modal{
+    background-color: rgba(0, 0, 0, 0.247);
+    backdrop-filter: blur(0px);
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 150ms ease-in-out;
+    overflow: auto;
+    padding: 20px;
+}
+.modal-content{
+    height: 1050px;
+    width: 672px;
+    margin: auto;
+    background-color: rgb(250, 250, 250);
+    border-radius: 10px;
+    overflow: hidden;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: 400ms 300ms all ease;
+}
+.modal-content .modal-header{
+    width: 100%;
+    padding: 20px 10px;
+    text-align: center;
+    background-color: rgb(249,249,249);
+    font-family: 'HindVadodara_SemiBold';
+    font-size: 20px;
+    color: var(--thir-color);
+}
+.modal-content .modal-body{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 18px 10px;
+}
+.modal-body .content-imagen-cropper{
+    width: 100%;
+    height: 800px;
+    padding: 5px;
+    outline: 1px solid var(--thir-color);
+}
+.content-imagen-cropper .img-cropper{
+    width: 100%;
+}
+.modal-body .content-imagen-sample{
+    height: 1050px;
+    width: 672px;
+    outline: 1px solid var(--thir-color);
+    border-radius: 20px;
+    overflow: hidden;
+}
+.modal-body .content-imagen-sample .img-sample{
+    height: 100%;
+    width: 100%;
+}
+
+.image-card{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1050px;
+    width: 672px;
+}
+
+.modal-content .modal-footer{
+    width: 100%;
+    padding: 10px 10px;
+    text-align: center;
+    background-color: rgb(249,249,249);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+}
+.modal-footer .btn{
+    border: none;
+    padding: 12px 70px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 300ms ease;
+}
+.modal-footer .primary{
+    background-color: var(--primary-color);
+    color: var(--thir-color);
+    font-family: 'HindVadodara_SemiBold';
+    border-radius: 100px;
+    font-size: 20px;
+}
+.modal-footer .secundary{
+    background-color: var(--secundary-color);
+    color: var(--thir-color);
+    border: 1px solid #1E786F;
+    font-family: 'HindVadodara_SemiBold';
+    border-radius: 100px;
+    font-size: 20px;
+
+}
+.modal-footer .primary:hover{
+    background-color: var(--primary-color-hover);
+}
+.modal-footer .secundary:hover{
+    background-color: var(--secundary-color-hover);
+}
+
+/* ==== Modal estilos active ==== */
+
+.modal.active{
+    opacity: 1;
+    backdrop-filter: blur(3px);
+    visibility: visible;
+}
+.modal-content.active{
+    transform: scale(1);
+    opacity: 1;
+}
+.modal.remove{
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    visibility: hidden;
+    transition: 150ms 150ms all ease-in-out;
+}
+.modal-content.remove{
+    transform: scale(0.9);
+    opacity: 0;
+    transition: 150ms all ease;
+}
+
+
+@media screen and (max-width: 1200px) {
+   
+    .modal-content{
+        width: 100%;
+    }
+    .container{
+        width: 90%;
+        height: 100vh;
+        margin: auto;
+        padding: 30px;
+    }
+    .group{
+        width: 100%;
+        height: 60%;
+        margin: auto;
+    }
+    .group .crop-image {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+    .image-card{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .group .label-file{
+        padding: 10px 10px 30px 10px;
+    }
+    .div-footer{
+        width: 100%;
+        padding: 10px 10px;
+        text-align: center;
+        background-color: rgb(255,255,255);
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 80px;
+    }
+    .div-spin{
+        width: 100%;
+        padding: 0px 10px;
+        text-align: center;
+        background-color: rgb(255,255,255);
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 5px;
+        margin-top: 5px;
+    }
+    button[title="btn primary"]{
+        border: none;
+        padding: 12px 70px;
+        border-radius: 5px;
+        font-size: 15px;
+        cursor: pointer;
+        color: #fff;
+        transition: background-color 300ms ease;
+        width: 100%;
+        background-color: var(--primary-color);
+        color: var(--thir-color);
+        font-family: 'HindVadodara_SemiBold';
+        border-radius: 100px;
+        font-size: 20px;
+    }
+    .div-spin .primary{
+        width: 50%;
+        padding: 5px 10px;
+    }
+    .div-footer .primary:hover{
+        background-color: var(--primary-color-hover);
+    }
+}
+@media screen and (max-width: 1200px) {
+
+    .modal {
+        padding: 20px;
+        margin: auto;
+        max-height: 100vh;
+    }
+    .modal-content {
+        height: 100%;
+    }
+    .modal-content .modal-header{
+        padding: 20px 10px 10px 10px ;
+    }
+    .content-imagen-sample{
+        display: none;
+    }
+    .modal-body .content-imagen-cropper{
+        width: 100%;
+    }
+    /* .modal-content{
+        max-height: 80vh;
+    } */
+    .modal-content .modal-footer{
+        flex-direction: column;
+        gap: 5px;
+    }
+    .modal-footer .btn{
+        width: 100%;
+    }
+    .modal-body .content-imagen-cropper {
+        height: 70vh;
+    }
+}
